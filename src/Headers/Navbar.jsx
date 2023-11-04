@@ -3,17 +3,18 @@ import { Link, NavLink } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import { CgLogIn } from "react-icons/cg";
 const Navbar = () => {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
   const handleLogout = () => {
     logout()
-    .then(() => {
-      toast.success("Successfully Logout!");
-      navigate("/");
-    })
-    .catch((err) => toast.error(`${err.message.slice(17).replace(")", "")}`));
-};
+      .then(() => {
+        toast.success("Successfully Logout!");
+        navigate("/");
+      })
+      .catch((err) => toast.error(`${err.message.slice(17).replace(")", "")}`));
+  };
   const [isMenuOpen, setMenuOpen] = useState(false);
   const toggleMenu = () => {
     setMenuOpen(!isMenuOpen);
@@ -94,9 +95,9 @@ const Navbar = () => {
               {!user?.email ? (
                 <Link
                   to={"/Login"}
-                  className=" bg-mainColor text-center  px-6 py-2 rounded normal-case hover:bg-mainColor text-light border-none"
+                  className=" bg-mainColor flex items-center gap-1 text-center  px-5 py-2 rounded normal-case hover:bg-mainColor text-light border-none"
                 >
-                  Login
+                  Login<CgLogIn className="text-2xl"></CgLogIn> 
                 </Link>
               ) : (
                 <div className="dropdown absolute dropdown-end flex justify-end w-11/12 mt-32 md:mt-0">
@@ -130,7 +131,6 @@ const Navbar = () => {
               )}
             </div>
           </div>
-          
         </nav>
       </header>
     </div>

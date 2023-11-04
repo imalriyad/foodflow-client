@@ -1,3 +1,4 @@
+import Hero from "../Headers/Hero";
 
 
 const Home = () => {
@@ -5,7 +6,7 @@ const Home = () => {
 
   return (
     <div>
-      <h1>This is Home</h1>
+    <Hero></Hero>
     </div>
   );
 };
