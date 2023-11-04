@@ -1,7 +1,19 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-
+import useAuth from "../Hooks/useAuth";
+import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 const Navbar = () => {
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    logout()
+    .then(() => {
+      toast.success("Successfully Logout!");
+      navigate("/");
+    })
+    .catch((err) => toast.error(`${err.message.slice(17).replace(")", "")}`));
+};
   const [isMenuOpen, setMenuOpen] = useState(false);
   const toggleMenu = () => {
     setMenuOpen(!isMenuOpen);
@@ -11,6 +23,7 @@ const Navbar = () => {
   const menuLink = link.map((item) => (
     <NavLink
       key={item}
+      to={`/${item === "Home" ? "" : item}`}
       className="font-medium text-blue-500"
       aria-current="page"
     >
@@ -74,39 +87,50 @@ const Navbar = () => {
               isMenuOpen ? "block" : "hidden"
             } overflow-hidden transition-all duration-300 basis-full grow sm:block`}
           >
-            <div className="flex flex-col gap-5 mt-5 sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:pl-5">
-              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-center w-full gap-4 lg:gap-6 ">
+            <div className="flex  flex-col gap-5 mt-5 sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:pl-5">
+              <div className="flex  flex-col sm:flex-row sm:items-center sm:justify-center w-full gap-4 lg:gap-6 ">
                 {menuLink}
-                
               </div>
-            </div>
-          </div>
-          {/* Drop down */}
-          <div className="flex items-center gap-5 md:mt-0 mt-3 justify-between">
-            {" "}
-            <button className=" bg-mainColor px-6 py-2 rounded normal-case hover:bg-mainColor text-light border-none">
-              Login
-            </button>
-            <div className="dropdown dropdown-end ">
-              <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                <div className="w-10 rounded-full">
-                  <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+              {!user?.email ? (
+                <Link
+                  to={"/Login"}
+                  className=" bg-mainColor text-center  px-6 py-2 rounded normal-case hover:bg-mainColor text-light border-none"
+                >
+                  Login
+                </Link>
+              ) : (
+                <div className="dropdown absolute dropdown-end flex justify-end w-11/12 mt-32 md:mt-0">
+                  <label
+                    tabIndex={0}
+                    className="btn btn-ghost btn-circle avatar"
+                  >
+                    <div className="w-10 rounded-full">
+                      <img src={user?.photoURL} />
+                    </div>
+                  </label>
+                  <ul
+                    tabIndex={0}
+                    className="menu menu-md mt-10 space-y-3 dropdown-content z-[1] p-2 shadow bg-dark text-light rounded-box w-52 "
+                  >
+                    <Link to={"/"}>
+                      <button className="btn btn-sm hover:bg-dark bg-dark  hover:border-mainColor hover:hover border-mainColor border w-full text-light">
+                        Setting
+                      </button>
+                    </Link>
+                    <Link to={"/"}>
+                      <button
+                        onClick={handleLogout}
+                        className="btn hover:border-mainColor hover:hover border-mainColor border btn-sm hover:bg-dark bg-dark  w-full text-light"
+                      >
+                        Logout
+                      </button>
+                    </Link>
+                  </ul>
                 </div>
-              </label>
-              <ul
-                tabIndex={0}
-                className="menu menu-md  space-y-3 dropdown-content mt-3 z-[1] p-2 shadow bg-dark text-light rounded-box w-52 "
-              >
-                <Link to={'/'}>
-                <button className="btn btn-sm hover:bg-dark bg-dark  w-full text-light">Setting</button>
-                </Link>
-                <Link to={'/'}>
-                <button className="btn  btn-sm hover:bg-dark bg-dark  w-full text-light">Logout</button>
-                </Link>
-                
-              </ul>
+              )}
             </div>
           </div>
+          
         </nav>
       </header>
     </div>
