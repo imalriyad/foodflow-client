@@ -1,8 +1,8 @@
 import { useLoaderData } from "react-router-dom";
 import AllCards from "../Components/Card/AllCards";
 import useAxios from "../Hooks/useAxios";
-
 import { useState, useEffect } from "react";
+import { useQuery } from "@tanstack/react-query";
 const AllFood = () => {
   const axios = useAxios();
   const [foods, setFoods] = useState([]);
@@ -11,7 +11,6 @@ const AllFood = () => {
   const { totalItem } = useLoaderData();
   const numberOfItemInPage = 9;
   const numberOfpages = Math.ceil(totalItem / numberOfItemInPage);
-  console.log(numberOfItemInPage);
   const pages = [...Array(numberOfpages).keys()];
 
   const handlePageination = (page) => {
@@ -51,6 +50,22 @@ const AllFood = () => {
       .get(`http://localhost:5000/api/v1/food?FoodName=${searchText}`)
       .then((res) => setFoods(res.data));
   };
+
+  const { data, isLoading } = useQuery({
+    queryKey: ["foood"],
+    queryFn: async () => {
+      const res = await axios.get(
+        `http://localhost:5000/api/v1/foods?page=${currentPage}&size=${numberOfItemInPage}`
+      );
+      return res;
+    },
+  });
+
+  if (isLoading) {
+    return (
+      <div className="w-16 my-[20%] h-16 mx-auto border-4 border-dashed rounded-full animate-spin border-mainColor"></div>
+    );
+  }
   return (
     <div className="mx-auto max-w-screen-xl">
       <div className="bg-dark my-5 px-6 rounded md:flex items-center justify-between md:pb-0 pb-5">
