@@ -125,10 +125,10 @@ const Navbar = () => {
                     </Link>
                     <Link to={"/"}>
                       <button className="btn hover:bg-dark bg-dark  hover:border-mainColor hover:hover border-mainColor border w-full text-light">
-                      Add a food 
+                      Add a food item
                </button>
                     </Link>
-                    <Link to={"/"}>
+                    <Link to={"/MyOrder"}>
                       <button className="btn hover:bg-dark bg-dark  hover:border-mainColor hover:hover border-mainColor border w-full text-light">
                       My ordered food 
                </button>

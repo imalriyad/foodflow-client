@@ -114,7 +114,7 @@ const AllFood = () => {
       </div>
 
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-4 lg:gap-8">
-        {foods.length < 1 ? (
+        {foods?.length < 1 ? (
           <div className="col-span-6 px-4">
             <img
               src="https://i.postimg.cc/xjLw08dh/global-warming-flatline-a4945.png"

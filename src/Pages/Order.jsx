@@ -6,11 +6,14 @@ import { useState } from "react";
 import "react-datetime-picker/dist/DateTimePicker.css";
 import "react-calendar/dist/Calendar.css";
 import "react-clock/dist/Clock.css";
+import useAxios from "../Hooks/useAxios";
+import swal from 'sweetalert';
 
 const Order = () => {
   const { user } = useAuth();
+  const axios = useAxios();
   const loadedData = useLoaderData();
-  const { FoodName, Price } = loadedData;
+  const { FoodName, Price,FoodImage ,FoodCategory,MadeBy,FoodOrigin} = loadedData;
   const [value, onChange] = useState(new Date());
 
   const handleOrder = (e) => {
@@ -18,11 +21,31 @@ const Order = () => {
     const customerName = e.target.name.value;
     const customerEmail = e.target.email.value;
     const FoodName = e.target.foodName.value;
-    const OrderedPrice = e.target.Price.value;
+    const Price = e.target.Price.value;
     const ordereduantity = e.target.Quantity.value;
-    const orderTime = value
-    const newOrder = {customerName,customerEmail,FoodName,OrderedPrice,ordereduantity,orderTime}
-    console.log(newOrder);
+    const orderTime = value;
+    const newOrder = {
+      customerName,
+      customerEmail,
+      FoodName,
+       Price,
+      ordereduantity,
+      orderTime,
+      FoodImage,
+      FoodCategory,
+      MadeBy,
+      FoodOrigin
+    };
+    axios.post("foods/order", newOrder).then((res) => {
+      if(res.data.insertedId){
+        swal({
+          title: "Greetings!",
+          text: `Your ${FoodName} Order has been placed`,
+          icon: "success",
+          button: "Okay",
+        });
+      }
+    });
   };
 
   return (
@@ -126,7 +149,7 @@ const Order = () => {
                       "w-full rounded p-1  bg-light border text-dark text-sm outline-none"
                     }
                     onChange={onChange}
-                    value={value.toDateString()}
+                    value={value}
                   />
                 </div>
               </div>

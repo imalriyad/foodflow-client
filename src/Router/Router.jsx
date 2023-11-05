@@ -8,6 +8,7 @@ import ResetPass from "../Form/ResetPass";
 import ErorrPage from "../Pages/ErorrPage";
 import FoodDetails from "../Pages/FoodDetails";
 import Order from "../Pages/Order";
+import MyOrder from "../Pages/MyOrder/MyOrder";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
         element: <Order></Order>,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/api/v1/foods/${params.id}`),
+      },
+      {
+        path: "/MyOrder",
+        element: <MyOrder></MyOrder>,
       },
       {
         path: "/Contact",
