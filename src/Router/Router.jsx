@@ -5,12 +5,13 @@ import AllFood from "../Pages/AllFood";
 import Login from "../Form/Login";
 import Registration from "../Form/Registration";
 import ResetPass from "../Form/ResetPass";
+import ErorrPage from "../Pages/ErorrPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
-    errorElement: <h1>Errror</h1>,
+    errorElement: <ErorrPage />,
     children: [
       {
         path: "/",
@@ -19,6 +20,7 @@ const router = createBrowserRouter([
       {
         path: "/All Food",
         element: <AllFood></AllFood>,
+        loader:()=> fetch('http://localhost:5000/api/v1/totalItem')
       },
       {
         path: "/Contact",

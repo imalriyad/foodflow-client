@@ -114,14 +114,24 @@ const Navbar = () => {
                     className="menu menu-md mt-10 space-y-3 dropdown-content z-[1] p-2 shadow bg-dark text-light rounded-box w-52 "
                   >
                     <Link to={"/"}>
-                      <button className="btn btn-sm hover:bg-dark bg-dark  hover:border-mainColor hover:hover border-mainColor border w-full text-light">
-                        Setting
-                      </button>
+                      <button className="btn hover:bg-dark bg-dark  hover:border-mainColor hover:hover border-mainColor border w-full text-light">
+                     My added food 
+               </button>
+                    </Link>
+                    <Link to={"/"}>
+                      <button className="btn hover:bg-dark bg-dark  hover:border-mainColor hover:hover border-mainColor border w-full text-light">
+                      Add a food 
+               </button>
+                    </Link>
+                    <Link to={"/"}>
+                      <button className="btn hover:bg-dark bg-dark  hover:border-mainColor hover:hover border-mainColor border w-full text-light">
+                      My ordered food 
+               </button>
                     </Link>
                     <Link to={"/"}>
                       <button
                         onClick={handleLogout}
-                        className="btn hover:border-mainColor hover:hover border-mainColor border btn-sm hover:bg-dark bg-dark  w-full text-light"
+                        className="btn hover:border-mainColor hover:hover border-mainColor border hover:bg-dark bg-dark  w-full text-light"
                       >
                         Logout
                       </button>

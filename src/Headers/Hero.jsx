@@ -3,7 +3,7 @@ import { MdFastfood } from "react-icons/md";
 import { motion } from "framer-motion";
 const Hero = () => {
   return (
-    <div>
+    <div >
       <div
         className="hero min-h-[90vh]"
         style={{
@@ -13,8 +13,8 @@ const Hero = () => {
         <div className="hero-overlay bg-opacity-60 bg-dark"></div>
         <div className="hero-content text-left text-neutral-content">
           <div className="flex lg:flex-row flex-col space-y-4 gap-10 justify-between items-center">
-            <div>
-              <h1 className="mb-5 md:text-7xl text-light text-4xl font-bold ">
+            <div className="lg:w-11/12 w-full ">
+              <h1 className="mb-5 md:text-6xl text-light text-4xl font-bold ">
                 We belive good food offer great smile
               </h1>
               <p className="mb-5 md:text-base text-sm">
@@ -28,7 +28,7 @@ const Hero = () => {
               </button>{" "}
             </div>
             <motion.div
-              className="box"
+              className="box "
               initial={{ opacity: 0, scale: 0.5 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{

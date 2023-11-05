@@ -5,3 +5,7 @@
 div a.active{
     border-bottom: 2px solid #FEA116;
 }
+
+.activeBtn {
+    background-color: #FEA116;
+}
