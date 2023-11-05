@@ -9,6 +9,7 @@ import ErorrPage from "../Pages/ErorrPage";
 import FoodDetails from "../Pages/FoodDetails";
 import Order from "../Pages/Order";
 import MyOrder from "../Pages/MyOrder/MyOrder";
+import Menu from "../Pages/Menu";
 
 const router = createBrowserRouter([
   {
@@ -47,7 +48,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/Menu",
-        element: <AllFood></AllFood>,
+        element: <Menu></Menu>,
       },
       {
         path: "/Blog",
