@@ -84,23 +84,28 @@ const Navbar = () => {
           </div>
           <div
             id="navbar-image-and-text-2"
-            className={`hs-collapse ${
+            className={`hs-collapse-toggle ${
               isMenuOpen ? "block" : "hidden"
             } overflow-hidden transition-all duration-300 basis-full grow sm:block`}
           >
-            <div className="flex  flex-col gap-5 mt-5 sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:pl-5">
+            <div className="flex max-w-screen-2xl   flex-col gap-5 mt-5 sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:pl-5">
               <div className="flex  flex-col sm:flex-row sm:items-center sm:justify-center w-full gap-4 lg:gap-6 ">
                 {menuLink}
               </div>
-              {!user?.email ? (
+              
+            </div>
+          </div>
+            {!user?.email ? (
                 <Link
                   to={"/Login"}
-                  className=" bg-mainColor flex items-center gap-1 text-center  px-5 py-2 rounded normal-case hover:bg-mainColor text-light border-none"
+                  className=" bg-mainColor flex  items-center gap-1 text-center  px-5 py-2 rounded normal-case hover:bg-mainColor text-light border-none"
                 >
                   Login<CgLogIn className="text-2xl"></CgLogIn> 
                 </Link>
               ) : (
-                <div className="dropdown absolute dropdown-end flex justify-end w-11/12 mt-32 md:mt-0">
+                <div className={`dropdown z-[50]  md:block dropdown-end flex justify-end md:w-1/12  text-right ${
+                  isMenuOpen ? "block" : "hidden"
+                }`}>
                   <label
                     tabIndex={0}
                     className="btn btn-ghost btn-circle avatar"
@@ -111,7 +116,7 @@ const Navbar = () => {
                   </label>
                   <ul
                     tabIndex={0}
-                    className="menu menu-md mt-10 space-y-3 dropdown-content z-[1] p-2 shadow bg-dark text-light rounded-box w-52 "
+                    className="menu menu-md mt-10 space-y-3 dropdown-content  p-2 shadow bg-dark text-light rounded-box w-52 "
                   >
                     <Link to={"/"}>
                       <button className="btn hover:bg-dark bg-dark  hover:border-mainColor hover:hover border-mainColor border w-full text-light">
@@ -139,10 +144,10 @@ const Navbar = () => {
                   </ul>
                 </div>
               )}
-            </div>
-          </div>
         </nav>
+      
       </header>
+     
     </div>
   );
 };
