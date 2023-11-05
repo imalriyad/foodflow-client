@@ -1,6 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import { MdFastfood } from "react-icons/md";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 const Hero = () => {
   return (
     <div >
@@ -23,9 +24,9 @@ const Hero = () => {
                 food, ensuring that every bite brings genuine smiles to your
                 face
               </p>
-              <button className="btn flex items-center bg-mainColor border-none hover:bg-mainColor rounded text-light">
+             <Link to={'/All Food'}> <button  className="btn flex items-center bg-mainColor border-none hover:bg-mainColor rounded text-light">
                 Explore Meals<MdFastfood className="text-2xl"></MdFastfood>
-              </button>{" "}
+              </button>{" "}</Link>
             </div>
             <motion.div
               className="box "
