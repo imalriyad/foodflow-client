@@ -1,6 +1,11 @@
 /* eslint-disable react/no-unescaped-entities */
 import {BiSolidLeftArrow} from 'react-icons/bi'
+import { useNavigate } from 'react-router-dom';
 const ErorrPage = () => {
+  const naviagte = useNavigate()
+  const goHome =()=>{
+    naviagte('/')
+  }
   return (
     <div className='bg-dark'>
       <div className="grid min-h-screen px-4 bg-white place-content-center">
@@ -16,7 +21,7 @@ const ErorrPage = () => {
           </h1>
 
           <p className="mt-4 text-gray-500 text-light text-xl md:text-4xl ">We can't find that page.</p>
-          <button className="btn md:btn-md btn-sm mt-4  bg-mainColor text-light hover:bg-mainColor border-none"><BiSolidLeftArrow className='text-xl'></BiSolidLeftArrow> Back To Home</button>
+          <button onClick={goHome} className="btn md:btn-md btn-sm mt-4  bg-mainColor text-light hover:bg-mainColor border-none"><BiSolidLeftArrow className='text-xl'></BiSolidLeftArrow> Back To Home</button>
         </div>
       </div>
     </div>
