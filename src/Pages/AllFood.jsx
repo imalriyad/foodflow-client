@@ -1,9 +1,8 @@
 import { useLoaderData } from "react-router-dom";
 import AllCards from "../Components/Card/AllCards";
-import { useState } from "react";
 import useAxios from "../Hooks/useAxios";
-import { useQuery } from "@tanstack/react-query";
 
+import { useState, useEffect } from "react";
 const AllFood = () => {
   const axios = useAxios();
   const [foods, setFoods] = useState([]);
@@ -12,6 +11,7 @@ const AllFood = () => {
   const { totalItem } = useLoaderData();
   const numberOfItemInPage = 9;
   const numberOfpages = Math.ceil(totalItem / numberOfItemInPage);
+  console.log(numberOfItemInPage);
   const pages = [...Array(numberOfpages).keys()];
 
   const handlePageination = (page) => {
@@ -29,24 +29,15 @@ const AllFood = () => {
     }
   };
 
-  const getFun = async () => {
-    const res = await axios
-      .get(`http://localhost:5000/api/v1/foods`)
+  useEffect(() => {
+    axios
+      .get(
+        `http://localhost:5000/api/v1/foods?page=${currentPage}&size=${numberOfItemInPage}`
+      )
       .then((response) => {
         setFoods(response.data);
       });
-    return res;
-  };
-  const { isLoading } = useQuery({
-    queryKey: ["foods"],
-    queryFn: getFun,
-  });
-
-  if (isLoading) {
-    return (
-      <div className="w-16 my-[20%] h-16 mx-auto border-4 border-dashed rounded-full animate-spin border-mainColor"></div>
-    );
-  }
+  }, [axios, currentPage, numberOfItemInPage]);
 
   // Get and set Search Text
   const getInputText = (e) => {
@@ -125,7 +116,7 @@ const AllFood = () => {
       </div>
 
       {/* Paginations */}
-      <h1 className="text-5xl text-mainColor ">currentPage {currentPage}</h1>
+
       <div className="flex justify-center space-x-5 text-gray-100 py-10">
         <button
           title="previous"
