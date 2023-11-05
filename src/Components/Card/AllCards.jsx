@@ -1,6 +1,8 @@
+import { Link } from "react-router-dom";
+
 /* eslint-disable react/prop-types */
 const AllCards = ({food}) => {
-  const { FoodName, FoodImage, FoodCategory, Price, Quantity, }= food
+  const {_id, FoodName, FoodImage, FoodCategory, Price, Quantity, }= food
 
   return (
     <>
@@ -27,12 +29,12 @@ const AllCards = ({food}) => {
             <span className="text-2xl font-bold text-gray-900 dark:text-white">
               ${Price}
             </span>
-            <a
+            <Link to={`/FoodDetails/${_id}`}
              
               className="text-white btn btn-sm bg-mainColor hover:bg-mainColor normal-case text-light"
             >
               Details
-            </a>
+            </Link>
           </div>
         </div>
       </div>

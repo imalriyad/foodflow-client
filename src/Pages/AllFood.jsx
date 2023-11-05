@@ -51,7 +51,7 @@ const AllFood = () => {
       .then((res) => setFoods(res.data));
   };
 
-  const { data, isLoading } = useQuery({
+  const { isLoading } = useQuery({
     queryKey: ["foood"],
     queryFn: async () => {
       const res = await axios.get(
