@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useParams } from "react-router-dom";
 import { BsCartCheckFill } from "react-icons/bs";
 import DateTimePicker from "react-datetime-picker";
 import useAuth from "../Hooks/useAuth";
@@ -8,11 +8,21 @@ import "react-calendar/dist/Calendar.css";
 import "react-clock/dist/Clock.css";
 import useAxios from "../Hooks/useAxios";
 import swal from "sweetalert";
+import { useQuery } from "@tanstack/react-query";
 
 const Order = () => {
   const { user } = useAuth();
   const axios = useAxios();
+  const { id } = useParams();
   const loadedData = useLoaderData();
+  const { data, isLoading } = useQuery({
+    queryKey: ["topSellingFood"],
+    queryFn: async () => {
+      const res = await axios.get(`/foods/topSellingFood/${id}`);
+      console.log(res);
+      return res.data;
+    },
+  });
   const {
     _id,
     FoodName,
@@ -22,17 +32,25 @@ const Order = () => {
     MadeBy,
     FoodOrigin,
     Quantity,
-  } = loadedData;
+    description,
+    OrderCount
+  } = data || loadedData;
   const [value, onChange] = useState(new Date());
+
+  if (isLoading) {
+    return (
+      <div className="w-16 my-[20%] h-16 mx-auto border-4 border-dashed rounded-full animate-spin border-mainColor"></div>
+    );
+  }
 
   const handleOrder = (e) => {
     e.preventDefault();
     const customerName = e.target.name.value;
     const customerEmail = e.target.email.value;
     const FoodName = e.target.foodName.value;
-    const Price = e.target.Price.value;
+    const price = e.target.Price.value;
+    const Price = price.slice(1);
     const orderedQuantity = parseInt(e.target.orderedQuantity.value);
-
 
     if (Quantity === 0) {
       swal({
@@ -53,7 +71,7 @@ const Order = () => {
       });
       return;
     }
-  
+
     if (orderedQuantity <= Quantity) {
       const newOrder = {
         customerName,
@@ -66,13 +84,19 @@ const Order = () => {
         FoodCategory,
         MadeBy,
         FoodOrigin,
+        Quantity,
+        description,
+        OrderCount
       };
 
       axios.post("foods/order", newOrder).then((res) => {
         if (res.data.insertedId) {
           const newQuantity = Quantity - orderedQuantity;
-          axios.put(`/foods/${_id}`, { Quantity: newQuantity });
-
+          const item = {
+            Quantity: newQuantity,
+            OrderCount: (OrderCount || 0) + orderedQuantity ,
+          };
+          axios.put(`/foods/${_id}`, item);
           swal({
             title: "Greetings!",
             text: `Your ${FoodName} Order has been placed`,
@@ -183,7 +207,11 @@ const Order = () => {
                   name="Quantity"
                   required
                   readOnly
-                  defaultValue={Quantity}
+                  defaultValue={
+                    data.Quantity === undefined
+                      ? loadedData?.Quantity
+                      : data.Quantity
+                  }
                   className="w-full rounded border bg-gray-50 px-3 py-2 text-dark text-sm outline-none "
                 />
               </div>
@@ -211,6 +239,8 @@ const Order = () => {
                 </label>
                 <div className="bg-gray-50 ">
                   <DateTimePicker
+                    disableClock={true}
+                    format="y-MM-dd h:mm:ss"
                     className={
                       "w-full rounded p-1  bg-light border text-dark text-sm outline-none"
                     }

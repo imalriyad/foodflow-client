@@ -8,7 +8,6 @@ import { useQueryClient } from "@tanstack/react-query";
 const MyOrder = () => {
   const { user } = useAuth();
   const axios = useAxios();
-  console.log(user?.email);
   const queryClient = useQueryClient();
   const handleCancelOrder = (_id) => {
     swal({
@@ -34,10 +33,10 @@ const MyOrder = () => {
   const { isLoading, data: myOrder } = useQuery({
     queryKey: ["myOrder"],
     queryFn: async () => {
-      const res = await fetch(
-        `http://localhost:5000/api/v1/foods/myOrder?customerEmail=${user?.email}`
+      const res = await axios.get(
+        `/foods/myOrder?customerEmail=${user?.email}`
       );
-      return res.json();
+      return res.data;
     },
   });
 
@@ -67,7 +66,7 @@ const MyOrder = () => {
                 alt=""
               />
               <h1 className="md:text-3xl text-xl font-bold text-light text-center ">
-                Oppss! No macthing foods with this name
+                Oppss! You have not orderd anyhting yet!
               </h1>
             </div>
           ) : (

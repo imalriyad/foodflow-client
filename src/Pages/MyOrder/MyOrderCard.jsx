@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 
 const MyOrderCard = ({ orders,handleCancelOrder }) => {
-  const { _id, FoodName, FoodImage, FoodCategory, Price,orderTime,MadeBy,FoodOrigin} = orders;
+  const { _id, FoodName, FoodImage, FoodCategory, Price,orderTime,MadeBy,orderedQuantity} = orders;
 
  
   return (
@@ -24,7 +24,7 @@ const MyOrderCard = ({ orders,handleCancelOrder }) => {
             <div className="badge badge-neutral">{FoodCategory}</div>
             <div className="badge badge-neutral">{orderTime.slice(0,10)}</div>
             <div className="badge badge-neutral">{MadeBy}</div>
-            <div className="badge badge-neutral">{FoodOrigin}</div>
+            <div className="badge badge-neutral">Quantity: {orderedQuantity}</div>
           </div>
           <div className="flex items-center justify-between">
             <span className="text-2xl font-bold text-gray-900 dark:text-white">
