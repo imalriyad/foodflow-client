@@ -37,7 +37,7 @@ const FoodDetails = () => {
         <figure>
           <img
             src={FoodImage}
-            className="object-cover w-full h-[450px]"
+            className="object-cover w-full md:h-[450px] h-[250px]"
             alt="Album"
           />
         </figure>

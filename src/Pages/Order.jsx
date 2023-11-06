@@ -15,11 +15,15 @@ const Order = () => {
   const axios = useAxios();
   const { id } = useParams();
   const loadedData = useLoaderData();
+  const [orderedquantity,setOrderQuantity] = useState(0)
+  const handleOrderedQuantity =(e)=>{
+      setOrderQuantity(e.target.value)
+  }
+
   const { data, isLoading } = useQuery({
     queryKey: ["topSellingFood"],
     queryFn: async () => {
       const res = await axios.get(`/foods/topSellingFood/${id}`);
-      console.log(res);
       return res.data;
     },
   });
@@ -33,7 +37,7 @@ const Order = () => {
     FoodOrigin,
     Quantity,
     description,
-    OrderCount
+    OrderCount,
   } = data || loadedData;
   const [value, onChange] = useState(new Date());
 
@@ -50,7 +54,7 @@ const Order = () => {
     const FoodName = e.target.foodName.value;
     const price = e.target.Price.value;
     const Price = price.slice(1);
-    const orderedQuantity = parseInt(e.target.orderedQuantity.value);
+    const orderedQuantity = parseInt(orderedquantity);
 
     if (Quantity === 0) {
       swal({
@@ -86,7 +90,7 @@ const Order = () => {
         FoodOrigin,
         Quantity,
         description,
-        OrderCount
+        OrderCount,
       };
 
       axios.post("foods/order", newOrder).then((res) => {
@@ -94,7 +98,7 @@ const Order = () => {
           const newQuantity = Quantity - orderedQuantity;
           const item = {
             Quantity: newQuantity,
-            OrderCount: (OrderCount || 0) + orderedQuantity ,
+            OrderCount: (OrderCount || 0) + orderedQuantity,
           };
           axios.put(`/foods/${_id}`, item);
           swal({
@@ -103,6 +107,7 @@ const Order = () => {
             icon: "success",
             button: "Okay",
           });
+          e.target.reset();
         }
       });
     }
@@ -111,7 +116,7 @@ const Order = () => {
   return (
     <div>
       <div className="bg-white py-6 sm:py-8 lg:py-12 bg-dark h-screen drop-shadow-md">
-        <h1 className="md:text-4xl text-2xl  font-bold py-14 text-light flex items-center gap-3 justify-center">
+        <h1 className="md:text-4xl text-2xl max-w-screen-xl mx-auto pl-8  font-bold py-14 text-light flex items-center gap-3 lg:justify-start justify-center">
           Confirm your order{" "}
           <BsCartCheckFill className="text-3xl text-mainColor"></BsCartCheckFill>
         </h1>
@@ -183,17 +188,35 @@ const Order = () => {
 
               <div>
                 <label
-                  htmlFor="Quantity"
+                  htmlFor="orderedQuantity"
                   className="mb-2 inline-block text-sm text-light sm:text-base"
                 >
-                  Quantity
+                  Order Quantity
                 </label>
-                <input
+                <select
+                onChange={handleOrderedQuantity}
+                id="example7"
+                required
+                value={orderedquantity}
+                className="w-full rounded border bg-gray-50 px-3 py-2 text-dark text-sm outline-none"
+              >
+                <option>Select Order Quantity</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3 </option>
+                <option value="4">4 </option>
+                <option value="5">5 </option>
+                <option value="10">10 </option>
+                <option value="15">15</option>
+             
+              </select>
+
+                {/* <input
                   name="orderedQuantity"
                   required
                   placeholder="Food Quantity"
                   className="w-full rounded border bg-gray-50 px-3 py-2 text-dark text-sm outline-none "
-                />
+                /> */}
               </div>
 
               <div>

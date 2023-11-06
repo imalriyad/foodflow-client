@@ -4,13 +4,13 @@ import Home from "../Pages/Home";
 import AllFood from "../Pages/AllFood";
 import Login from "../Form/Login";
 import Registration from "../Form/Registration";
-import ResetPass from "../Form/ResetPass";
 import ErorrPage from "../Pages/ErorrPage";
 import FoodDetails from "../Pages/FoodDetails";
 import Order from "../Pages/Order";
 import MyOrder from "../Pages/MyOrder/MyOrder";
 import Menu from "../Pages/Menu";
 import Blog from "../Pages/Blog/Blog";
+import AddFood from "../Pages/AddFood/AddFood";
 
 const router = createBrowserRouter([
   {
@@ -44,6 +44,10 @@ const router = createBrowserRouter([
         element: <MyOrder></MyOrder>,
       },
       {
+        path: "/AddFood",
+        element: <AddFood></AddFood>,
+      },
+      {
         path: "/Contact",
         element: <AllFood></AllFood>,
       },
@@ -63,10 +67,7 @@ const router = createBrowserRouter([
         path: "/Registration",
         element: <Registration></Registration>,
       },
-      {
-        path: "/ResetPass",
-        element: <ResetPass></ResetPass>,
-      },
+     
     ],
   },
 ]);

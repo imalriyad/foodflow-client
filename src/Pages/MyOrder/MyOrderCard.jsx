@@ -28,7 +28,7 @@ const MyOrderCard = ({ orders,handleCancelOrder }) => {
           </div>
           <div className="flex items-center justify-between">
             <span className="text-2xl font-bold text-gray-900 dark:text-white">
-              {Price}
+              ${Price}
             </span>
             <button
              onClick={()=> handleCancelOrder(_id)}

@@ -123,7 +123,7 @@ const Navbar = () => {
                      My added food 
                </button>
                     </Link>
-                    <Link to={"/"}>
+                    <Link to={"/AddFood"}>
                       <button className="btn hover:bg-dark bg-dark  hover:border-mainColor hover:hover border-mainColor border w-full text-light">
                       Add a food item
                </button>
