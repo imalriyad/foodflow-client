@@ -10,6 +10,7 @@ import FoodDetails from "../Pages/FoodDetails";
 import Order from "../Pages/Order";
 import MyOrder from "../Pages/MyOrder/MyOrder";
 import Menu from "../Pages/Menu";
+import Blog from "../Pages/Blog/Blog";
 
 const router = createBrowserRouter([
   {
@@ -52,7 +53,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/Blog",
-        element: <AllFood></AllFood>,
+        element: <Blog></Blog>,
       },
       {
         path: "/Login",

@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxios from "../../../Hooks/useAxios";
 import AllCards from "../AllCards";
+import { Link } from "react-router-dom";
 
 
 const TopSelling = () => {
@@ -20,13 +21,18 @@ const TopSelling = () => {
   }
 
   return (
-    <div className="mx-auto max-w-screen-xl">
-      <h1 className="text-center text-4xl font-bold">Most Popular Items</h1>
-      <div className="grid grid-cols-1 gap-4 lg:grid-cols-4 lg:gap-8">
+    <div className="bg-[#0e1936]">
+        <div className="mx-auto  max-w-screen-xl px-4 py-6">
+      <h1 className=" md:text-4xl text-center text-2xl font-bold py-10 text-light">Most Popular Items</h1>
+      <div className="grid grid-cols-1 gap-4 lg:grid-cols-4 md:grid-cols-2 lg:gap-8">
         {popularItem?.map((food) => (
           <AllCards key={food._id} food={food}></AllCards>
         ))}
       </div>
+     <div className="text-center"> <Link to={'/All Food'} > <button  className="px-8 my-10 py-2 font-medium uppercase bg-mainColor border-none hover:bg-mainColor rounded text-light">
+                See All
+              </button>{" "}</Link></div>
+    </div>
     </div>
   );
 };

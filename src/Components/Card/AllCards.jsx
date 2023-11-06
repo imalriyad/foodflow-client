@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 
 /* eslint-disable react/prop-types */
 const AllCards = ({food}) => {
-  const {_id, FoodName, FoodImage, FoodCategory, Price, Quantity, }= food
-
+  const {_id, FoodName, FoodImage, FoodCategory, Price, Quantity}= food
+  
   return (
     <>
       <div className=" bg-light border border-gray-200 rounded shadow dark:bg-gray-800 dark:border-gray-700">

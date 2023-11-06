@@ -6,7 +6,7 @@ const Hero = () => {
   return (
     <div >
       <div
-        className="hero min-h-[90vh]"
+        className="hero min-h-[75vh]"
         style={{
           backgroundImage: "url(https://i.postimg.cc/ZYphTKn2/herobg.jpg)",
         }}
