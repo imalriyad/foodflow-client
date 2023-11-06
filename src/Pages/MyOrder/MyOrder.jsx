@@ -47,14 +47,17 @@ const MyOrder = () => {
     );
   }
 
-  console.log(myOrder);
+ 
   return (
-    <div className="bg-dark min-h-screen">
+    <div className=" min-h-screen bg-[#152346]" >
       <div className="mx-auto max-w-screen-xl ">
-        <h1 className="md:text-4xl text-2xl  font-bold py-14 text-light flex items-center gap-3 justify-center">
-          My Orders
+      <div className="bg-[#152346] px-6 rounded md:flex items-center justify-between">
+        <h1 className="md:text-4xl text-2xl flex gap-2 text-light font-bold text-left md:py-10 py-5">
+        My Orders
           <BsCartCheckFill className="text-3xl text-mainColor"></BsCartCheckFill>
         </h1>
+      </div>
+        
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-4 lg:gap-8">
           {myOrder?.length < 1 ? (
             <div className="col-span-6 px-4">

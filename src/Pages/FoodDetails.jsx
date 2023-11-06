@@ -2,7 +2,7 @@ import { Link, useLoaderData } from "react-router-dom";
 import {MdFastfood} from 'react-icons/md'
 const FoodDetails = () => {
     const loadedData = useLoaderData()
-    const {_id,FoodName,FoodImage,FoodCategory,Price,FoodOrigin,MadeBy,description} =loadedData
+    const {_id,FoodName,FoodImage,FoodCategory,Price,FoodOrigin,description,Quantity} =loadedData
 
  
     return (
@@ -20,7 +20,8 @@ const FoodDetails = () => {
           <div className="flex flex-wrap items-center gap-4 mt-2.5 mb-5">
             <div className="badge badge-neutral">{FoodCategory}</div>
             <div className="badge badge-neutral">{FoodOrigin}</div>
-           <div className="badge badge-neutral">{MadeBy}</div>
+            <div className="badge badge-neutral">Stock {Quantity}</div>
+           
        
           </div>
           <p className="text-2xl font-bold text-gray-900 dark:text-white">

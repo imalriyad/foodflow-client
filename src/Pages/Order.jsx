@@ -7,13 +7,22 @@ import "react-datetime-picker/dist/DateTimePicker.css";
 import "react-calendar/dist/Calendar.css";
 import "react-clock/dist/Clock.css";
 import useAxios from "../Hooks/useAxios";
-import swal from 'sweetalert';
+import swal from "sweetalert";
 
 const Order = () => {
   const { user } = useAuth();
   const axios = useAxios();
   const loadedData = useLoaderData();
-  const { FoodName, Price,FoodImage ,FoodCategory,MadeBy,FoodOrigin} = loadedData;
+  const {
+    _id,
+    FoodName,
+    Price,
+    FoodImage,
+    FoodCategory,
+    MadeBy,
+    FoodOrigin,
+    Quantity,
+  } = loadedData;
   const [value, onChange] = useState(new Date());
 
   const handleOrder = (e) => {
@@ -22,30 +31,57 @@ const Order = () => {
     const customerEmail = e.target.email.value;
     const FoodName = e.target.foodName.value;
     const Price = e.target.Price.value;
-    const ordereduantity = e.target.Quantity.value;
-    const orderTime = value;
-    const newOrder = {
-      customerName,
-      customerEmail,
-      FoodName,
-       Price,
-      ordereduantity,
-      orderTime,
-      FoodImage,
-      FoodCategory,
-      MadeBy,
-      FoodOrigin
-    };
-    axios.post("foods/order", newOrder).then((res) => {
-      if(res.data.insertedId){
-        swal({
-          title: "Greetings!",
-          text: `Your ${FoodName} Order has been placed`,
-          icon: "success",
-          button: "Okay",
-        });
-      }
-    });
+    const orderedQuantity = parseInt(e.target.orderedQuantity.value);
+
+
+    if (Quantity === 0) {
+      swal({
+        title: "Opss!",
+        text: "This item is out of stock!",
+        icon: "error",
+        button: "Okay",
+      });
+      return;
+    }
+
+    if (orderedQuantity > Quantity) {
+      swal({
+        title: "Opss!",
+        text: "Requested Quantity is not available",
+        icon: "error",
+        button: "Okay",
+      });
+      return;
+    }
+  
+    if (orderedQuantity <= Quantity) {
+      const newOrder = {
+        customerName,
+        customerEmail,
+        FoodName,
+        Price,
+        orderedQuantity,
+        orderTime: value,
+        FoodImage,
+        FoodCategory,
+        MadeBy,
+        FoodOrigin,
+      };
+
+      axios.post("foods/order", newOrder).then((res) => {
+        if (res.data.insertedId) {
+          const newQuantity = Quantity - orderedQuantity;
+          axios.put(`/foods/${_id}`, { Quantity: newQuantity });
+
+          swal({
+            title: "Greetings!",
+            text: `Your ${FoodName} Order has been placed`,
+            icon: "success",
+            button: "Okay",
+          });
+        }
+      });
+    }
   };
 
   return (
@@ -129,13 +165,43 @@ const Order = () => {
                   Quantity
                 </label>
                 <input
-                  name="Quantity"
+                  name="orderedQuantity"
                   required
                   placeholder="Food Quantity"
                   className="w-full rounded border bg-gray-50 px-3 py-2 text-dark text-sm outline-none "
                 />
               </div>
 
+              <div>
+                <label
+                  htmlFor="Quantity"
+                  className="mb-2 inline-block text-sm text-light sm:text-base"
+                >
+                  Stock Quantity
+                </label>
+                <input
+                  name="Quantity"
+                  required
+                  readOnly
+                  defaultValue={Quantity}
+                  className="w-full rounded border bg-gray-50 px-3 py-2 text-dark text-sm outline-none "
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="Quantity"
+                  className="mb-2 inline-block text-sm text-light sm:text-base"
+                >
+                  Made By
+                </label>
+                <input
+                  name="Quantity"
+                  required
+                  readOnly
+                  defaultValue={MadeBy}
+                  className="w-full rounded border bg-gray-50 px-3 py-2 text-dark text-sm outline-none "
+                />
+              </div>
               <div>
                 <label
                   htmlFor="Order Date"
