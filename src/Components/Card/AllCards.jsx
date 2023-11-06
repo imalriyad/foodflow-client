@@ -23,7 +23,7 @@ const AllCards = ({food}) => {
           </p>
           <div className="flex items-center gap-x-4 mt-2.5 mb-5">
             <div className="badge badge-neutral">{FoodCategory}</div>
-            <div className="badge badge-neutral">Stock: {Quantity}</div>
+            <div className={`badge ${Quantity === 0 ? 'badge-error':'badge-neutral'}`}>Stock: {Quantity}</div>
           </div>
           <div className="flex items-center justify-between">
             <span className="text-2xl font-bold text-gray-900 dark:text-white">
