@@ -1,8 +1,8 @@
 import { useLoaderData } from "react-router-dom";
-import AllCards from "../Components/Card/AllCards";
-import useAxios from "../Hooks/useAxios";
+import useAxios from "../../Hooks/useAxios";
 import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
+import AllCards from "./AllCards";
 const AllFood = () => {
   const axios = useAxios();
   const [foods, setFoods] = useState([]);

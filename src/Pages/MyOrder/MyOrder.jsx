@@ -48,9 +48,9 @@ const MyOrder = () => {
 
  
   return (
-    <div className=" min-h-screen bg-[#152346]" >
+    <div className="min-h-screen bg-[#152346]" >
       <div className="mx-auto max-w-screen-xl ">
-      <div className="bg-[#152346] px-6 rounded md:flex items-center justify-between">
+      <div className="px-6 rounded md:flex items-center justify-between">
         <h1 className="md:text-4xl text-2xl flex gap-2 text-light font-bold text-left md:py-10 py-5">
         My Orders
           <BsCartCheckFill className="text-3xl text-mainColor"></BsCartCheckFill>

@@ -36,6 +36,7 @@ const Order = () => {
     MadeBy,
     FoodOrigin,
     Quantity,
+    MadeByEmail,
     description,
     OrderCount,
   } = data || loadedData;
@@ -65,7 +66,7 @@ const Order = () => {
       });
       return;
     }
-
+   
     if (orderedQuantity > Quantity) {
       swal({
         title: "Opss!",
@@ -74,6 +75,16 @@ const Order = () => {
         button: "Okay",
       });
       return;
+    }
+
+    if(user?.email === MadeByEmail){
+      swal({
+        title: "Opss!",
+        text: "You Cant buy a foods you have added by own!",
+        icon: "error",
+        button: "Okay",
+      });
+      return
     }
 
     if (orderedQuantity <= Quantity) {
@@ -210,13 +221,6 @@ const Order = () => {
                 <option value="15">15</option>
              
               </select>
-
-                {/* <input
-                  name="orderedQuantity"
-                  required
-                  placeholder="Food Quantity"
-                  className="w-full rounded border bg-gray-50 px-3 py-2 text-dark text-sm outline-none "
-                /> */}
               </div>
 
               <div>

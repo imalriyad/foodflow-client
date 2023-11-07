@@ -118,7 +118,7 @@ const Navbar = () => {
                     tabIndex={0}
                     className="menu menu-md mt-10 space-y-3 dropdown-content  p-2 shadow bg-dark text-light rounded-box w-52 "
                   >
-                    <Link to={"/"}>
+                    <Link to={"/MyAddedFood"}>
                       <button className="btn hover:bg-dark bg-dark  hover:border-mainColor hover:hover border-mainColor border w-full text-light">
                      My added food 
                </button>

@@ -1,7 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "../Layout/MainLayout";
 import Home from "../Pages/Home";
-import AllFood from "../Pages/AllFood";
 import Login from "../Form/Login";
 import Registration from "../Form/Registration";
 import ErorrPage from "../Pages/ErorrPage";
@@ -11,6 +10,8 @@ import MyOrder from "../Pages/MyOrder/MyOrder";
 import Menu from "../Pages/Menu";
 import Blog from "../Pages/Blog/Blog";
 import AddFood from "../Pages/AddFood/AddFood";
+import MyAddedItem from "../Pages/MyAddedItem/MyAddedItem";
+import AllFood from "../Pages/AllFood/AllFood";
 
 const router = createBrowserRouter([
   {
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
       {
         path: "/AddFood",
         element: <AddFood></AddFood>,
+      },
+      {
+        path: "/MyAddedFood",
+        element: <MyAddedItem></MyAddedItem>,
       },
       {
         path: "/Contact",
