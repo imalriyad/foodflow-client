@@ -2,6 +2,7 @@ import useAuth from "../../Hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
 import useAxios from "../../Hooks/useAxios";
 import AllCards from "../AllFood/AllCards";
+import { Helmet } from "react-helmet-async";
 
 const MyAddedItem = () => {
   const { user } = useAuth();
@@ -31,6 +32,9 @@ const MyAddedItem = () => {
   }
   return (
     <div className="min-h-screen bg-[#152346]">
+      <Helmet>
+        <title>FoodFlow | My Added Food</title>
+      </Helmet>
       <div className="mx-auto max-w-screen-xl px-4 ">
         <div className="px-6 rounded md:flex items-center justify-between">
           <h1 className="md:text-4xl text-2xl flex gap-2 text-light font-bold text-left md:py-10 py-5">

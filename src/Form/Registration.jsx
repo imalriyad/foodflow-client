@@ -7,6 +7,7 @@ import useAxios from "../Hooks/useAxios";
 import useAuth from "../Hooks/useAuth";
 import { updateProfile } from "firebase/auth";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet-async";
 const Login = () => {
   const [isShow, setShow] = useState(false);
   const { registeration } = useAuth();
@@ -56,6 +57,9 @@ const Login = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>FoodFlow | Registration</title>
+      </Helmet>
       <section className="relative overflow-hidden bg-black text-white py-5 lg:py-[40px]">
         <div className="container mx-auto">
           <div className="flex justify-between flex-row-reverse mx-2">

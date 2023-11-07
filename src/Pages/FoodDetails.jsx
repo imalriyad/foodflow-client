@@ -11,7 +11,6 @@ const FoodDetails = () => {
     queryKey: ["topSellingFood"],
     queryFn: async () => {
       const res = await axios.get(`/foods/topSellingFood/${id}`);
-      console.log(res);
       return res.data;
     },
   });

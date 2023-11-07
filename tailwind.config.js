@@ -5,7 +5,7 @@ export default {
     colors: {
       mainColor: "#FEA116",
       light: "#F1F8FF",
-      dark: "#0F172B",
+      dark: "#130f40",
     },
   },
   plugins: [require("daisyui")],

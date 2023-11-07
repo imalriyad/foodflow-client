@@ -6,9 +6,11 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
 import toast from "react-hot-toast";
 import { Helmet } from "react-helmet-async";
+import useAxios from "../Hooks/useAxios";
 
 const Login = () => {
   const [isShow, setShow] = useState(false);
+  const axios = useAxios();
   const { login } = useAuth();
   const navigate = useNavigate();
   const { state } = useLocation();
@@ -17,11 +19,12 @@ const Login = () => {
     const from = e.target;
     const email = from.email.value;
     const password = from.password.value;
-    console.log(email, password);
     login(email, password)
       .then(() => {
         toast.success("Login Successfull!");
         navigate(state ? state : "/");
+        const user = { email };
+        axios.post("/jwt-token", user).then((res) => console.log(res.data));
       })
       .catch((error) => toast.error(error));
   };

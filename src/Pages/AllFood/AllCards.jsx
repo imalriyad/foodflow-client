@@ -2,7 +2,6 @@ import { Link, useLocation } from "react-router-dom";
 import { FaEdit } from "react-icons/fa";
 import { HiDocumentSearch } from "react-icons/hi";
 import Modal from "./Modal";
-import { Helmet } from "react-helmet-async";
 
 /* eslint-disable react/prop-types */
 const AllCards = ({ food, handleModal}) => {
@@ -11,9 +10,7 @@ const AllCards = ({ food, handleModal}) => {
 
   return (
     <>
-     <Helmet>
-        <title>FoodFlow | My Added Food</title>
-      </Helmet>
+   
       <div className=" bg-light border border-gray-200 rounded shadow dark:bg-gray-800 dark:border-gray-700">
         <div className="h-[200px]">
           <img
