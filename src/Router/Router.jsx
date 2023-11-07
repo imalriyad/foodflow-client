@@ -12,6 +12,7 @@ import Blog from "../Pages/Blog/Blog";
 import AddFood from "../Pages/AddFood/AddFood";
 import MyAddedItem from "../Pages/MyAddedItem/MyAddedItem";
 import AllFood from "../Pages/AllFood/AllFood";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -30,27 +31,27 @@ const router = createBrowserRouter([
       },
       {
         path: "/FoodDetails/:id",
-        element: <FoodDetails></FoodDetails>,
+        element: <PrivateRoute><FoodDetails></FoodDetails></PrivateRoute>,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/api/v1/foods/${params.id}`),
       },
       {
         path: "/order/:id",
-        element: <Order></Order>,
+        element: <PrivateRoute><Order></Order></PrivateRoute>,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/api/v1/foods/${params.id}`),
       },
       {
         path: "/MyOrder",
-        element: <MyOrder></MyOrder>,
+        element: <PrivateRoute><MyOrder></MyOrder></PrivateRoute>,
       },
       {
         path: "/AddFood",
-        element: <AddFood></AddFood>,
+        element: <PrivateRoute><AddFood></AddFood></PrivateRoute>,
       },
       {
         path: "/MyAddedFood",
-        element: <MyAddedItem></MyAddedItem>,
+        element: <PrivateRoute><MyAddedItem></MyAddedItem></PrivateRoute>,
       },
       {
         path: "/Contact",

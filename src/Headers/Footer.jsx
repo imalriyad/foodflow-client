@@ -17,21 +17,14 @@ const Footer = () => {
                 Usefull Links
               </h3>
               <ul className="space-y-1">
-               
                 <li>
-                <Link to={'/All Food'}>
-                All Food
-                  </Link>
+                  <Link to={"/All Food"}>All Food</Link>
                 </li>
                 <li>
-                <Link to={'/Menu'}>
-                Menu
-                  </Link>
+                  <Link to={"/Menu"}>Menu</Link>
                 </li>
                 <li>
-                <Link to={'/Blog'}>
-                Blog
-                  </Link>
+                  <Link to={"/Blog"}>Blog</Link>
                 </li>
               </ul>
             </div>
@@ -39,19 +32,13 @@ const Footer = () => {
               <h3 className="tracki uppercase dark:text-gray-50">Company</h3>
               <ul className="space-y-1">
                 <li>
-                <Link to={'/Contact'}>
-                Contact
-                  </Link>
+                  <Link to={"/Contact"}>Contact</Link>
                 </li>
                 <li>
-                  <a >
-                    Privacy
-                  </a>
+                  <a>Privacy</a>
                 </li>
                 <li>
-                  <a >
-                    Terms of Service
-                  </a>
+                  <a>Terms of Service</a>
                 </li>
               </ul>
             </div>
@@ -59,19 +46,13 @@ const Footer = () => {
               <h3 className="uppercase dark:text-gray-50">Developers</h3>
               <ul className="space-y-1">
                 <li>
-                  <a >
-                    Public API
-                  </a>
+                  <a>Public API</a>
                 </li>
                 <li>
-                  <a >
-                    Documentation
-                  </a>
+                  <a>Documentation</a>
                 </li>
                 <li>
-                  <a >
-                    Guides
-                  </a>
+                  <a>Guides</a>
                 </li>
               </ul>
             </div>
