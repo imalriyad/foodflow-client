@@ -7,12 +7,12 @@ const MyAddedItem = () => {
   const { user } = useAuth();
   const axios = useAxios();
 
-  function handleUpdateItem() {
+  const handleModal = () => {
     const modal = document.getElementById("my_modal_5");
     if (modal) {
       modal.showModal();
     }
-  }
+  };
 
   const { data: myaddedItem, isLoading } = useQuery({
     queryKey: ["MyAddedFood"],
@@ -43,7 +43,7 @@ const MyAddedItem = () => {
             <AllCards
               key={food._id}
               food={food}
-              handleUpdateItem={handleUpdateItem}
+              handleModal={handleModal}
             ></AllCards>
           ))}
         </div>

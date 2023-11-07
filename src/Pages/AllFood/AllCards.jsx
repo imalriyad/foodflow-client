@@ -4,7 +4,7 @@ import { HiDocumentSearch } from "react-icons/hi";
 import Modal from "./Modal";
 
 /* eslint-disable react/prop-types */
-const AllCards = ({ food, handleUpdateItem }) => {
+const AllCards = ({ food, handleModal }) => {
   const { _id, FoodName, FoodImage, FoodCategory, Price, Quantity } = food;
   const { pathname } = useLocation();
 
@@ -40,7 +40,7 @@ const AllCards = ({ food, handleUpdateItem }) => {
             </span>
             {pathname === "/MyAddedFood" ? (
               <button
-                onClick={handleUpdateItem}
+                onClick={handleModal}
                 className="text-white gap-1 btn btn-sm bg-mainColor hover:bg-mainColor normal-case text-light"
               >
                 Update<FaEdit></FaEdit>
@@ -49,7 +49,7 @@ const AllCards = ({ food, handleUpdateItem }) => {
               ""
             )}
 
-            <Modal></Modal>
+            <Modal id={_id}></Modal>
             <Link
               to={`/FoodDetails/${_id}`}
               className="text-white btn btn-sm gap-0 bg-mainColor hover:bg-mainColor normal-case text-light"

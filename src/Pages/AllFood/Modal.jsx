@@ -1,9 +1,15 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
-
-const Modal = () => {
+import useAxios from "../../Hooks/useAxios";
+import swal from "sweetalert";
+import { useRef } from "react";
+const Modal = ({ id }) => {
+  const axios = useAxios();
   const [quantity, setQuantity] = useState(0);
   const [category, setCategory] = useState("");
   const [origin, setOrigin] = useState("");
+  const modalRef = useRef(null);
+
   const handleQuantity = (e) => {
     setQuantity(e.target.value);
   };
@@ -13,14 +19,53 @@ const Modal = () => {
   const handleOrigin = (e) => {
     setOrigin(e.target.value);
   };
+
+  const handleUpdateItem = (e) => {
+    e.preventDefault();
+    const FoodName = e.target.foodName.value;
+    const FoodImage = e.target.FoodImage.value;
+    const Price = e.target.Price.value;
+    const Quantity = parseInt(quantity);
+    const FoodCategory = category;
+    const FoodOrigin = origin;
+    const updatedItem = {
+      FoodName,
+      FoodImage,
+      Price,
+      Quantity,
+      FoodCategory,
+      FoodOrigin,
+    };
+
+    axios.patch(`/foods/updateItem/${id}`, updatedItem).then((res) => {
+      if (res.data.modifiedCount > 0) {
+        swal({
+          title: "Yay",
+          text: "This food items info are updated",
+          icon: "success",
+          button: "Okay",
+        });
+        e.target.reset();
+        modalRef.current.close();
+      }
+    });
+  };
+
   return (
     <>
-      <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
+      <dialog
+        id="my_modal_5"
+        ref={modalRef}
+        className="modal modal-bottom sm:modal-middle"
+      >
         <div className="modal-box bg-[#30336b]">
           <h3 className="font-bold md:text-2xl text-lg text-light py-5 text-center">
             Update the food items
           </h3>
-          <form className="mx-auto grid max-w-screen-md gap-5 sm:grid-cols-2">
+          <form
+            onSubmit={handleUpdateItem}
+            className="mx-auto grid max-w-screen-md gap-5 sm:grid-cols-2"
+          >
             <div>
               <label
                 htmlFor="FoodName"
@@ -30,6 +75,7 @@ const Modal = () => {
               </label>
               <input
                 name="foodName"
+                type="text"
                 placeholder="Food Name"
                 className="w-full rounded border bg-gray-50 px-3 py-2 text-dark text-sm outline-none "
               />
@@ -44,6 +90,7 @@ const Modal = () => {
               </label>
               <input
                 name="Price"
+                type="number"
                 placeholder="Food Price"
                 className="w-full rounded border bg-gray-50 px-3 py-2 text-dark text-sm outline-none "
               />
@@ -63,6 +110,7 @@ const Modal = () => {
                 className="w-full rounded border bg-gray-50 px-3 py-2 text-dark text-sm outline-none"
               >
                 <option>Select Food Quantity</option>
+                <option value="0">0</option>
                 <option value="5">5</option>
                 <option value="10">10</option>
                 <option value="15">15 </option>
