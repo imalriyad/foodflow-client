@@ -3,12 +3,14 @@ import { useState } from "react";
 import useAxios from "../../Hooks/useAxios";
 import swal from "sweetalert";
 import { useRef } from "react";
-const Modal = ({ id }) => {
+import { useQueryClient } from "@tanstack/react-query";
+const Modal = ({ id}) => {
   const axios = useAxios();
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState("");
   const [category, setCategory] = useState("");
   const [origin, setOrigin] = useState("");
   const modalRef = useRef(null);
+  const queryClient = useQueryClient();
 
   const handleQuantity = (e) => {
     setQuantity(e.target.value);
@@ -47,6 +49,7 @@ const Modal = ({ id }) => {
         });
         e.target.reset();
         modalRef.current.close();
+        queryClient.invalidateQueries("myOrder");
       }
     });
   };
@@ -109,7 +112,7 @@ const Modal = ({ id }) => {
                 value={quantity}
                 className="w-full rounded border bg-gray-50 px-3 py-2 text-dark text-sm outline-none"
               >
-                <option>Select Food Quantity</option>
+                <option value="">Select Food Quantity</option>
                 <option value="0">0</option>
                 <option value="5">5</option>
                 <option value="10">10</option>
