@@ -2,6 +2,7 @@ import { useState } from "react";
 import useAuth from "../../Hooks/useAuth";
 import useAxios from "../../Hooks/useAxios";
 import swal from "sweetalert";
+import { Helmet } from "react-helmet-async";
 
 const AddFood = () => {
   const { user } = useAuth();
@@ -54,6 +55,9 @@ const AddFood = () => {
   };
   return (
     <div className="mx-auto max-w-screen-xl">
+       <Helmet>
+        <title>FoodFlow | Add a Food</title>
+      </Helmet>
       <div className="bg-dark my-5 px-6 rounded md:flex items-center justify-between md:pb-0 pb-5">
         <h1 className="md:text-3xl text-2xl text-light font-bold text-left md:py-10 py-5">
           Add a Food Item

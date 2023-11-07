@@ -5,6 +5,7 @@ import MyOrderCard from "./MyOrderCard";
 import swal from "sweetalert";
 import useAxios from "../../Hooks/useAxios";
 import { useQueryClient } from "@tanstack/react-query";
+import { Helmet } from "react-helmet-async";
 const MyOrder = () => {
   const { user } = useAuth();
   const axios = useAxios();
@@ -49,6 +50,9 @@ const MyOrder = () => {
  
   return (
     <div className="min-h-screen bg-[#152346]" >
+      <Helmet>
+        <title>FoodFlow | My Ordered food</title>
+      </Helmet>
       <div className="mx-auto max-w-screen-xl ">
       <div className="px-6 rounded md:flex items-center justify-between">
         <h1 className="md:text-4xl text-2xl flex gap-2 text-light font-bold text-left md:py-10 py-5">

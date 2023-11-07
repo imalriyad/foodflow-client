@@ -1,6 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 const Blog = () => {
   const [btnOne, setBtnOne] = useState(false);
@@ -9,6 +10,9 @@ const Blog = () => {
 
   return (
     <div className="mx-auto max-w-screen-xl px-4">
+       <Helmet>
+        <title>FoodFlow | Blog</title>
+      </Helmet>
       {/* Blog 1 */}
       <div className="mx-auto max-w-screen-lg">
         <img

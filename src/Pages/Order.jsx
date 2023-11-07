@@ -9,16 +9,18 @@ import "react-clock/dist/Clock.css";
 import useAxios from "../Hooks/useAxios";
 import swal from "sweetalert";
 import { useQuery } from "@tanstack/react-query";
-
+import { Helmet } from "react-helmet-async";
+import { useQueryClient } from "@tanstack/react-query";
 const Order = () => {
   const { user } = useAuth();
   const axios = useAxios();
   const { id } = useParams();
   const loadedData = useLoaderData();
-  const [orderedquantity,setOrderQuantity] = useState(0)
-  const handleOrderedQuantity =(e)=>{
-      setOrderQuantity(e.target.value)
-  }
+  const [orderedquantity, setOrderQuantity] = useState(0);
+  const queryClient = useQueryClient();
+  const handleOrderedQuantity = (e) => {
+    setOrderQuantity(e.target.value);
+  };
 
   const { data, isLoading } = useQuery({
     queryKey: ["topSellingFood"],
@@ -66,7 +68,7 @@ const Order = () => {
       });
       return;
     }
-   
+
     if (orderedQuantity > Quantity) {
       swal({
         title: "Opss!",
@@ -77,14 +79,14 @@ const Order = () => {
       return;
     }
 
-    if(user?.email === MadeByEmail){
+    if (user?.email === MadeByEmail) {
       swal({
         title: "Opss!",
         text: "You Cant buy a foods you have added by own!",
         icon: "error",
         button: "Okay",
       });
-      return
+      return;
     }
 
     if (orderedQuantity <= Quantity) {
@@ -118,6 +120,7 @@ const Order = () => {
             icon: "success",
             button: "Okay",
           });
+          queryClient.invalidateQueries("myOrder");
           e.target.reset();
         }
       });
@@ -126,6 +129,9 @@ const Order = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>FoodFlow | Confirm Order</title>
+      </Helmet>
       <div className="bg-white py-6 sm:py-8 lg:py-12 bg-dark h-screen drop-shadow-md">
         <h1 className="md:text-4xl text-2xl max-w-screen-xl mx-auto pl-8  font-bold py-14 text-light flex items-center gap-3 lg:justify-start justify-center">
           Confirm your order{" "}
@@ -205,22 +211,21 @@ const Order = () => {
                   Order Quantity
                 </label>
                 <select
-                onChange={handleOrderedQuantity}
-                id="example7"
-                required
-                value={orderedquantity}
-                className="w-full rounded border bg-gray-50 px-3 py-2 text-dark text-sm outline-none"
-              >
-                <option>Select Order Quantity</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3 </option>
-                <option value="4">4 </option>
-                <option value="5">5 </option>
-                <option value="10">10 </option>
-                <option value="15">15</option>
-             
-              </select>
+                  onChange={handleOrderedQuantity}
+                  id="example7"
+                  required
+                  value={orderedquantity}
+                  className="w-full rounded border bg-gray-50 px-3 py-2 text-dark text-sm outline-none"
+                >
+                  <option defaultChecked>Select Order Quantity</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3 </option>
+                  <option value="4">4 </option>
+                  <option value="5">5 </option>
+                  <option value="10">10 </option>
+                  <option value="15">15</option>
+                </select>
               </div>
 
               <div>

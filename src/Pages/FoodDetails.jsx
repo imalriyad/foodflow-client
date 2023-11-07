@@ -2,6 +2,7 @@ import { Link, useLoaderData, useParams } from "react-router-dom";
 import { MdFastfood } from "react-icons/md";
 import { useQuery } from "@tanstack/react-query";
 import useAxios from "../Hooks/useAxios";
+import { Helmet } from "react-helmet-async";
 const FoodDetails = () => {
   const loadedData = useLoaderData();
   const { id } = useParams();
@@ -33,6 +34,9 @@ const FoodDetails = () => {
 
   return (
     <div className="max-w-screen-xl px-4 py-10 mx-auto">
+        <Helmet>
+        <title>FoodFlow | {FoodName}</title>
+      </Helmet>
       <div className="card lg:card-side bg-base-100 shadow-xl">
         <figure>
           <img

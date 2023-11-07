@@ -5,6 +5,7 @@ import { HiEye, HiEyeOff } from "react-icons/hi";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
   const [isShow, setShow] = useState(false);
@@ -27,6 +28,10 @@ const Login = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>FoodFlow | Login</title>
+      </Helmet>
+
       <section className="relative overflow-hidden bg-black text-white py-5 lg:py-[40px]">
         <div className="container mx-auto">
           <div className="flex justify-between flex-row-reverse mx-2">

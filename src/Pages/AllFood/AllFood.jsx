@@ -3,6 +3,7 @@ import useAxios from "../../Hooks/useAxios";
 import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import AllCards from "./AllCards";
+import { Helmet } from "react-helmet-async";
 const AllFood = () => {
   const axios = useAxios();
   const [foods, setFoods] = useState([]);
@@ -67,7 +68,11 @@ const AllFood = () => {
     );
   }
   return (
+    
     <div className="mx-auto max-w-screen-xl">
+      <Helmet>
+        <title>FoodFlow | All Foods</title>
+      </Helmet>
       <div className="bg-dark my-5 px-6 rounded md:flex items-center justify-between md:pb-0 pb-5">
         <h1 className="md:text-3xl text-2xl text-light font-bold text-left md:py-10 py-5">
           Explore Our All Foods
