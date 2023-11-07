@@ -1,5 +1,6 @@
 import { Outlet, useNavigation } from "react-router-dom";
 import Navbar from "../Headers/Navbar";
+import Footer from "../Headers/Footer";
 
 const MainLayout = () => {
   const { state } = useNavigation();
@@ -12,6 +13,7 @@ const MainLayout = () => {
       ) : (
         <Outlet></Outlet>
       )}
+       <Footer></Footer>
     </div>
   );
 };
