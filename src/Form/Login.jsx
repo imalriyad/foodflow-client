@@ -2,19 +2,29 @@
 import { useState } from "react";
 import GoogleLogin from "./GoogleLogin";
 import { HiEye, HiEyeOff } from "react-icons/hi";
-import { Link,  } from "react-router-dom";
-
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import useAuth from "../Hooks/useAuth";
+import toast from "react-hot-toast";
 
 const Login = () => {
   const [isShow, setShow] = useState(false);
-
+  const { login } = useAuth();
+  const navigate = useNavigate();
+  const { state } = useLocation();
   const handleLogin = (e) => {
     e.preventDefault();
-    // const from = e.target;
-    // const email = from.email.value;
-    // const password = from.password.value;
+    const from = e.target;
+    const email = from.email.value;
+    const password = from.password.value;
+    console.log(email, password);
+    login(email, password)
+      .then(() => {
+        toast.success("Login Successfull!");
+        navigate(state ? state : "/");
+      })
+      .catch((error) => toast.error(error));
+  };
 
-  }
   return (
     <div>
       <section className="relative overflow-hidden bg-black text-white py-5 lg:py-[40px]">

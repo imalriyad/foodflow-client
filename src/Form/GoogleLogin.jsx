@@ -1,15 +1,16 @@
 import toast from "react-hot-toast";
 import useAuth from "../Hooks/useAuth";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 const GoogleLogin = () => {
   const { googleLogin } = useAuth();
   const navigate = useNavigate();
+  const { state } = useLocation();
   const handleGoogleLogin = () => {
     const toastId = toast.loading("logging....");
     googleLogin()
       .then(() => {
         toast.success("Logged in Successful", { id: toastId });
-        navigate("/");
+        navigate(state ? state : "/");
       })
       .catch((err) =>
         toast.error(`${err.message.slice(17).replace(")", "")}`, {

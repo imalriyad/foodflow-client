@@ -3,7 +3,6 @@ import { Link, NavLink } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import { CgLogIn } from "react-icons/cg";
 const Navbar = () => {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
@@ -11,7 +10,7 @@ const Navbar = () => {
     logout()
       .then(() => {
         toast.success("Successfully Logout!");
-        navigate("/");
+        navigate("/Login");
       })
       .catch((err) => toast.error(`${err.message.slice(17).replace(")", "")}`));
   };
@@ -98,9 +97,11 @@ const Navbar = () => {
             {!user?.email ? (
                 <Link
                   to={"/Login"}
-                  className=" bg-mainColor flex  items-center gap-1 text-center  px-5 py-2 rounded normal-case hover:bg-mainColor text-light border-none"
+                  className={`bg-mainColor md:block md:mt-0 mt-4 text-center  px-5 py-2 rounded normal-case hover:bg-mainColor text-light border-none ${
+                    isMenuOpen ? "block" : "hidden"
+                  }`}
                 >
-                  Login<CgLogIn className="text-2xl"></CgLogIn> 
+                  Login 
                 </Link>
               ) : (
                 <div className={`dropdown z-[50]  md:block dropdown-end flex justify-end md:w-1/12  text-right ${

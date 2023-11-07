@@ -2,17 +2,58 @@
 import { useState } from "react";
 import GoogleLogin from "./GoogleLogin";
 import { HiEye, HiEyeOff } from "react-icons/hi";
-import { Link } from "react-router-dom";
-
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import useAxios from "../Hooks/useAxios";
+import useAuth from "../Hooks/useAuth";
+import { updateProfile } from "firebase/auth";
+import toast from "react-hot-toast";
 const Login = () => {
   const [isShow, setShow] = useState(false);
-
-  const handleLogin = (e) => {
+  const { registeration } = useAuth();
+  const axios = useAxios();
+  const navigate = useNavigate();
+  const { state } = useLocation();
+  const handleRegister = (e) => {
     e.preventDefault();
-    // const from = e.target;
-    // const email = from.email.value;
-    // const password = from.password.value;
+    const from = e.target;
+    const name = from.name.value;
+    const email = from.email.value;
+    const password = from.password.value;
+    const photoUrl = from.photoUrl.value;
+    const user = { name, email, password, photoUrl };
+    
+    if (password.length < 6) {
+      return toast.error("Password must be at least 6 characters long.");
+    }
+    // eslint-disable-next-line no-useless-escape
+    if (!/[!@#$%^&*()_=\[\]{};:'",<>?/\\|-]/.test(password)) {
+      return toast.error(
+        "Password must contain at least one special character."
+      );
+    }
+    if (!/[A-Z]/.test(password)) {
+      return toast.error("Password must contain at least one capital letter.");
+    }
+    registeration(email, password)
+      .then((res) => {
+        updateProfile(res.user, {
+          displayName: name,
+          photoURL: photoUrl,
+        })
+          .then(() => {
+            console.log("Profile updated!");
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+
+        toast.success("Registration successfull");
+        navigate(state ? state : "/");
+        axios.post("/user", user).then((res) => console.log(res));
+      })
+      .catch((error) => toast.error(error));
   };
+
   return (
     <div>
       <section className="relative overflow-hidden bg-black text-white py-5 lg:py-[40px]">
@@ -25,7 +66,7 @@ const Login = () => {
             />
             <div className="px-4 xl:w-[30%] lg:w-2/3 w-full">
               <div className="relative dark:bg-dark-2 ">
-                <form onSubmit={handleLogin}>
+                <form onSubmit={handleRegister}>
                   <h1 className="text-4xl font-bold py-6 text-mainColor">
                     Registration
                   </h1>
