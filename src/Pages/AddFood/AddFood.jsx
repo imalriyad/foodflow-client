@@ -54,7 +54,7 @@ const AddFood = () => {
     });
   };
   return (
-    <div className="mx-auto max-w-screen-xl">
+    <div className="mx-auto max-w-screen-xl pb-10">
        <Helmet>
         <title>FoodFlow | Add a Food</title>
       </Helmet>
