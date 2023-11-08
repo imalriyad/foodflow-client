@@ -22,9 +22,9 @@ const Login = () => {
     login(email, password)
       .then(() => {
         toast.success("Login Successfull!");
-        navigate(state ? state : "/");
         const user = { email };
         axios.post("/jwt-token", user).then((res) => console.log(res.data));
+        navigate(state ? state : "/");
       })
       .catch((error) =>
         toast.error(`${error.message.slice(22).replace(")", "")}`)

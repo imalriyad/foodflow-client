@@ -10,7 +10,7 @@ const Blog = () => {
 
   return (
     <div className="mx-auto max-w-screen-xl px-4">
-       <Helmet>
+      <Helmet>
         <title>FoodFlow | Blog</title>
       </Helmet>
       {/* Blog 1 */}
@@ -31,13 +31,17 @@ const Blog = () => {
           the source automatically update the destination, but changes in the
           destination do not affect the source. One-way data binding is a key
           concept in many modern web frameworks, including Angular, React, and
-          Vue.js.{" "} <br />
-          <button 
-            onClick={() => setBtnOne(!btnOne)}
-            className="btn btn-sm bg-mainColor text-light hover:bg-mainColor"
-          >
-            See more
-          </button>
+          Vue.js. <br />
+          {!btnOne ? (
+            <button
+              onClick={() => setBtnOne(!btnOne)}
+              className="btn btn-sm bg-mainColor text-light hover:bg-mainColor"
+            >
+              See more
+            </button>
+          ) : (
+            ""
+          )}
         </p>{" "}
         <br />
         <span className={btnOne ? "block" : "hidden"}>
@@ -70,13 +74,21 @@ const Blog = () => {
         />
         <h1 className="text-3xl py-5 font-bold">What is NPM in node.js?</h1>
         <p className="text-dark ">
-        NPM (Node Package Manager) is a package manager and dependency management tool for Node.js, which is a runtime environment for executing JavaScript code on the server-side. NPM is the default package manager for Node.js, and it plays a central role in managing JavaScript packages and libraries <br />
-           <button
-            onClick={() => setBtnTwo(!btnTwo)}
-            className="btn btn-sm bg-mainColor text-light hover:bg-mainColor"
-          >
-            See more
-          </button>
+          NPM (Node Package Manager) is a package manager and dependency
+          management tool for Node.js, which is a runtime environment for
+          executing JavaScript code on the server-side. NPM is the default
+          package manager for Node.js, and it plays a central role in managing
+          JavaScript packages and libraries <br />
+          {!btnTwo ? (
+            <button
+              onClick={() => setBtnTwo(!btnTwo)}
+              className="btn btn-sm bg-mainColor text-light hover:bg-mainColor"
+            >
+              See more
+            </button>
+          ) : (
+            ""
+          )}
         </p>{" "}
         <br />
         <span className={btnTwo ? "block" : "hidden"}>
@@ -119,13 +131,17 @@ const Blog = () => {
           MySQL is a relational database system that stores data in a structured
           tabular format. In contrast, MongoDB stores data as JSON documents in
           a more flexible format. Both offer performance and scalability, but
-          they give better performance for different use cases.{" "} <br />
-          <button
-            onClick={() => setBtnThree(!btnThree)}
-            className="btn btn-sm bg-mainColor text-light hover:bg-mainColor"
-          >
-            See more
-          </button>
+          they give better performance for different use cases. <br />
+          {!btnThree ? (
+            <button
+              onClick={() => setBtnThree(!btnThree)}
+              className="btn btn-sm bg-mainColor text-light hover:bg-mainColor"
+            >
+              See more
+            </button>
+          ) : (
+            ""
+          )}
         </p>{" "}
         <br />
         <span className={btnThree ? "block" : "hidden"}>
