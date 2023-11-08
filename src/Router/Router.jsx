@@ -13,6 +13,7 @@ import AddFood from "../Pages/AddFood/AddFood";
 import MyAddedItem from "../Pages/MyAddedItem/MyAddedItem";
 import AllFood from "../Pages/AllFood/AllFood";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import Contact from "../Pages/Contact";
 
 const router = createBrowserRouter([
   {
@@ -76,7 +77,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/Contact",
-        element: <AllFood></AllFood>,
+        element: <Contact></Contact>,
       },
       {
         path: "/Menu",
