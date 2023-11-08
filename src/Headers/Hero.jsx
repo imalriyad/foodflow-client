@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 const Hero = () => {
   return (
-    <div >
+    <div>
       <div
         className="hero min-h-[75vh]"
         style={{
@@ -14,7 +14,12 @@ const Hero = () => {
         <div className="hero-overlay bg-opacity-60 bg-dark"></div>
         <div className="hero-content text-left text-neutral-content">
           <div className="flex lg:flex-row flex-col space-y-4 gap-10 justify-between items-center">
-            <div className="lg:w-11/12 w-full ">
+            <motion.div
+          
+           animate={{ y: [null, 100, 0] }}
+       
+              className="lg:w-11/12 w-full overflow-hidden"
+            >
               <h1 className="mb-5 md:text-6xl text-light text-4xl font-bold ">
                 We belive good food offer great smile
               </h1>
@@ -24,10 +29,13 @@ const Hero = () => {
                 food, ensuring that every bite brings genuine smiles to your
                 face
               </p>
-             <Link to={'/All Food'}> <button  className="btn flex items-center bg-mainColor border-none hover:bg-mainColor rounded text-light">
-                Explore Meals<MdFastfood className="text-2xl"></MdFastfood>
-              </button>{" "}</Link>
-            </div>
+              <Link to={"/All Food"}>
+                {" "}
+                <button className="btn flex items-center bg-mainColor border-none hover:bg-mainColor rounded text-light">
+                  Explore Meals<MdFastfood className="text-2xl"></MdFastfood>
+                </button>{" "}
+              </Link>
+            </motion.div>
             <motion.div
               className="box "
               initial={{ opacity: 0, scale: 0.5 }}
@@ -35,7 +43,7 @@ const Hero = () => {
               transition={{
                 ease: "linear",
                 duration: 1,
-                x: { duration: 1 }
+                x: { duration: 1 },
               }}
             >
               <img

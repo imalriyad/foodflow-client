@@ -6,3 +6,6 @@
   
 }
 
+.relative:hover .absolute {
+  opacity: 1;
+}

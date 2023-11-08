@@ -22,10 +22,13 @@ const TopSelling = () => {
   return (
     <div className="bg-dark">
       <div className="mx-auto  max-w-screen-xl px-4 py-6">
-        <h1 className=" md:text-5xl text-center text-2xl font-bold py-14 text-light">
+        <p className="text-mainColor text-center font-bold text-sm md:text-base group-hover:text-white mt-3">
+          Most ordered
+        </p>
+        <h1 className=" md:text-5xl text-center text-2xl font-bold py-5 text-light">
           Most Popular Items
         </h1>
-        <div className="grid grid-cols-1 gap-4 lg:grid-cols-4 md:grid-cols-2 lg:gap-8">
+        <div className="grid grid-cols-1 gap-4 lg:grid-cols-4 pt-10 md:grid-cols-2 lg:gap-8">
           {popularItem?.map((food) => (
             <AllCards key={food._id} food={food}></AllCards>
           ))}
