@@ -25,7 +25,7 @@ const AddFood = () => {
     e.preventDefault();
     const FoodName = e.target.foodName.value;
     const FoodImage = e.target.FoodImage.value;
-    const Price = e.target.Price.value;
+    const Price = parseInt(e.target.Price.value)
     const description = e.target.description.value;
     const MadeBy = e.target.MadeBy.value;
     const MadeByEmail = e.target.MadeByEmail.value;

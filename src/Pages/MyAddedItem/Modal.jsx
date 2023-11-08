@@ -26,7 +26,7 @@ const Modal = ({ id}) => {
     e.preventDefault();
     const FoodName = e.target.foodName.value;
     const FoodImage = e.target.FoodImage.value;
-    const Price = e.target.Price.value;
+    const Price = parseInt(e.target.Price.value);
     const Quantity = parseInt(quantity);
     const FoodCategory = category;
     const FoodOrigin = origin;

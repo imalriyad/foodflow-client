@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { FaEdit } from "react-icons/fa";
 import { HiDocumentSearch } from "react-icons/hi";
-import Modal from "./Modal";
+import Modal from "../MyAddedItem/Modal";
 
 /* eslint-disable react/prop-types */
 const AllCards = ({ food, handleModal}) => {
