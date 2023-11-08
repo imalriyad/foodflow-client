@@ -32,7 +32,7 @@ const AllFood = () => {
   useEffect(() => {
     axios
       .get(
-        `http://localhost:5000/api/v1/foods?page=${currentPage}&size=${numberOfItemInPage}`
+        `https://foodflow-server.vercel.app/api/v1/foods?page=${currentPage}&size=${numberOfItemInPage}`
       )
       .then((response) => {
         setFoods(response.data);
@@ -48,7 +48,9 @@ const AllFood = () => {
   // SearchHandler
   const handleSearch = () => {
     axios
-      .get(`http://localhost:5000/api/v1/food?FoodName=${searchText}`)
+      .get(
+        `https://foodflow-server.vercel.app/api/v1/food?FoodName=${searchText}`
+      )
       .then((res) => setFoods(res.data));
   };
 
@@ -56,7 +58,7 @@ const AllFood = () => {
     queryKey: ["foood"],
     queryFn: async () => {
       const res = await axios.get(
-        `http://localhost:5000/api/v1/foods?page=${currentPage}&size=${numberOfItemInPage}`
+        `https://foodflow-server.vercel.app/api/v1/foods?page=${currentPage}&size=${numberOfItemInPage}`
       );
       return res;
     },
@@ -68,7 +70,6 @@ const AllFood = () => {
     );
   }
   return (
-    
     <div className="mx-auto max-w-screen-xl">
       <Helmet>
         <title>FoodFlow | All Foods</title>

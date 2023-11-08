@@ -27,31 +27,52 @@ const router = createBrowserRouter([
       {
         path: "/All Food",
         element: <AllFood></AllFood>,
-        loader: () => fetch("http://localhost:5000/api/v1/totalItem"),
+        loader: () =>
+          fetch("https://foodflow-server.vercel.app/api/v1/totalItem"),
       },
       {
         path: "/FoodDetails/:id",
-        element: <PrivateRoute><FoodDetails></FoodDetails></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <FoodDetails></FoodDetails>
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/api/v1/foods/${params.id}`),
+          fetch(`https://foodflow-server.vercel.app/api/v1/foods/${params.id}`),
       },
       {
         path: "/order/:id",
-        element: <PrivateRoute><Order></Order></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <Order></Order>
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/api/v1/foods/${params.id}`),
+          fetch(`https://foodflow-server.vercel.app/api/v1/foods/${params.id}`),
       },
       {
         path: "/MyOrder",
-        element: <PrivateRoute><MyOrder></MyOrder></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <MyOrder></MyOrder>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/AddFood",
-        element: <PrivateRoute><AddFood></AddFood></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <AddFood></AddFood>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/MyAddedFood",
-        element: <PrivateRoute><MyAddedItem></MyAddedItem></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <MyAddedItem></MyAddedItem>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/Contact",
@@ -73,7 +94,6 @@ const router = createBrowserRouter([
         path: "/Registration",
         element: <Registration></Registration>,
       },
-     
     ],
   },
 ]);

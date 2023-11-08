@@ -26,7 +26,9 @@ const Login = () => {
         const user = { email };
         axios.post("/jwt-token", user).then((res) => console.log(res.data));
       })
-      .catch((error) => toast.error(error));
+      .catch((error) =>
+        toast.error(`${error.message.slice(22).replace(")", "")}`)
+      );
   };
 
   return (

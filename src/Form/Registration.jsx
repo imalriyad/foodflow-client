@@ -52,7 +52,9 @@ const Login = () => {
         navigate(state ? state : "/");
         axios.post("/user", user).then((res) => console.log(res));
       })
-      .catch((error) => toast.error(error));
+      .catch((error) =>
+        toast.error(`${error.message.slice(22).replace(")", "")}`)
+      );
   };
 
   return (

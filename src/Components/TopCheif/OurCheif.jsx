@@ -55,12 +55,14 @@ function OurCheif() {
       </h1>
       <div className="mx-auto max-w-screen-xl lg:px-0 px-12 ">
         <Slider {...settings}>
-          <div className="p-4  cursor-pointer  drop-shadow-md relative">
+          <div className="p-4 cursor-pointer drop-shadow-md relative ">
+         
             <img
               src="https://themewagon.github.io/restoran/img/team-1.jpg"
               alt=""
               className="rounded-lg relative"
             />
+            
             <div className=" mx-auto absolute bottom-6 w-[90%] opacity-0 transition-opacity duration-300">
               <div className="flex justify-center">
                 <img
