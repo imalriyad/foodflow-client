@@ -46,7 +46,7 @@ function OurCheif() {
 
   return (
     <div 
-     className="bg-[#f1f2f6] pb-14 md:pt-10 overflow-hidden">
+     className=" pb-14 md:pt-10 overflow-hidden">
       <p className="text-mainColor text-center font-bold text-sm md:text-base group-hover:text-white mt-3">
       Master Chefs
         </p>
@@ -165,7 +165,7 @@ function OurCheif() {
             </div>
           </div>
 
-          <div className="p-4  cursor-pointer drop-shadow-md cursor-pointer relative">
+          <div className="p-4 drop-shadow-md cursor-pointer relative">
             <img
               src="https://images.unsplash.com/photo-1583394293214-28ded15ee548?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
               alt=""

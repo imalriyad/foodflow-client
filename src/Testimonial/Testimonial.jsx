@@ -4,7 +4,7 @@ import Rating from "./Rating";
 
 const Testimonial = () => {
   return (
-    <div className="bg-[#f1f2f6]  pb-10">
+    <div className="pb-10 ">
       <div id="testimonial" className="py-6 px-4 max-w-screen-xl mx-auto">
         <div className="max-w-screen-sm mx-auto text-center px-4 my-14 space-y-3">
           <p className="text-mainColor font-semibold text-sm md:text-base group-hover:text-white mt-3">

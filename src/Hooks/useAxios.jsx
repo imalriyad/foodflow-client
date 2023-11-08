@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import auth from "../Firebase/firebase.config";
 import { Navigate } from "react-router-dom";
 const instance = axios.create({
-  baseURL: "http://localhost:5000/api/v1",
+  baseURL: "https://foodflow-server.vercel.app/api/v1",
   withCredentials: true,
 });
 
