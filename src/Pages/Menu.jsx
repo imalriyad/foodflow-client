@@ -6,7 +6,7 @@ const Menu = () => {
       className="bg-dark h-screen "
       style={{
         backgroundImage:
-          "url(https://marketplace.canva.com/EAE-A-L58gg/1/0/1600w/canva-black-elegant-restaurant-menus-a4-%28landscape%29-5-F02v39Dp4.jpg)",
+          "url(https://i.postimg.cc/65RqNw18/ezgif-com-webp-to-png-min-1.png)",
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
         backgroundPosition: "center",

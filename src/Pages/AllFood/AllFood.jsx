@@ -54,7 +54,6 @@ const AllFood = () => {
         `https://foodflow-server.vercel.app/api/v1/food?FoodName=${searchText}`
       )
       .then((res) => setFoods(res.data));
-      
   };
 
   const { isLoading } = useQuery({
@@ -67,17 +66,37 @@ const AllFood = () => {
     },
   });
 
-  const handleFilterByHighestToLowest = () => {
+  const handleFilterByHighestToLowestPrice = () => {
     axios
-      .get(`/food/highest-to-lowest-price?page=${currentPage}&size=${numberOfItemInPage}`)
+      .get(
+        `/food/highest-to-lowest-price?page=${currentPage}&size=${numberOfItemInPage}`
+      )
       .then((res) => setFoods(res.data));
   };
 
-  const handleFilterByLowestToHighest = () => {
+  const handleFilterByLowestToHighestPrice = () => {
     axios
-      .get(`/food/lowest-to-highest-price?page=${currentPage}&size=${numberOfItemInPage}`)
+      .get(
+        `/food/lowest-to-highest-price?page=${currentPage}&size=${numberOfItemInPage}`
+      )
       .then((res) => setFoods(res.data));
   };
+
+  const handleFilterByHighestToLowestStock = () => {
+    axios
+      .get(
+        `/food/highest-to-lowest-stock?page=${currentPage}&size=${numberOfItemInPage}`
+      )
+      .then((res) => setFoods(res.data));
+  };
+
+  const handleFilterByLowesttoHighestStock =()=>{
+    axios
+    .get(
+      `/food/lowest-to-highest-stock?page=${currentPage}&size=${numberOfItemInPage}`
+    )
+    .then((res) => setFoods(res.data));
+  }
 
   if (isLoading) {
     return (
@@ -104,19 +123,32 @@ const AllFood = () => {
             </label>
             <ul
               tabIndex={0}
-              className="dropdown-content z-[1] menu p-2 mt-5 shadow bg-light rounded-box w-52 space-y-1"
+              className="dropdown-content z-[1] menu p-2 mt-5 shadow bg-light rounded-box w-56 space-y-1"
             >
               <button
-                onClick={handleFilterByLowestToHighest}
+                onClick={handleFilterByLowestToHighestPrice}
                 className="btn  hover:bg-dark  text-xs bg-dark text-light "
               >
                 lowest to highest price{" "}
               </button>
               <button
-                onClick={handleFilterByHighestToLowest}
+                onClick={handleFilterByHighestToLowestPrice}
                 className="btn hover:bg-dark  bg-dark text-light text-xs"
               >
                 highest to lowest price
+              </button>
+              <button
+                onClick={handleFilterByHighestToLowestStock}
+                className="btn hover:bg-dark  bg-dark text-light text-xs"
+              >
+                highest to lowest stock
+              </button>
+
+              <button
+                onClick={handleFilterByLowesttoHighestStock}
+                className="btn hover:bg-dark  bg-dark text-light text-xs"
+              >
+                lowest to highest stock
               </button>
             </ul>
           </div>
