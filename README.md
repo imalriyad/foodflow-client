@@ -18,7 +18,7 @@
     User can Add foodItems from add a item route . This route is also private so you have to logged in and also a valid user with jwt token . user can see how many and which foods are they added and also can update by clicking update button .once click update button there will be show up a modal with input feilds
    
 -  ##### Contact from email sending with email js
-    Anyone who will visit can send message through contact from
+    Anyone who will visit can send message through contact from . I used email js for this feature.
 
 -  ##### Project Live Links  
    https://foodflow-6447d.web.app
