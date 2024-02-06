@@ -1,34 +1,57 @@
-# FoodFlow: Flavorful Journeys, Every Plate a Delight.
+# FoodFlow - Flavorful Journeys, Every Plate a Delight
 
-## Top 5 main Features of this projects are :
+FoodFlow is a dynamic food ordering platform that blends user-friendly features with a delightful culinary experience. Explore the top five main features below:
 
-- ##### Login Logout (firebse,mongodb,jwt token)
-   User can login and logout trough email and pasword or google. for this features i have used firebase and for stroring user credentials i hvae used mongodb database also i for creating with email/password and social login  cookies and stroing it to browser cookie for verifying user i have used jwt token also if you do logout the cookie form browser will be cleard . I have used react hot toast for every successfull or error message
+## Features:
 
--  ##### Top Selling Food Items
-   User can see top selling foods item in home page . Its showed by most orderd food . This section food items will daynamically update based on ordercount. Also those foodItem has details button so see details about that single food items
+1. **User Authentication and Authorization:**
+   - Users can seamlessly log in and out using email/password or Google authentication, leveraging Firebase and MongoDB.
+   - Secure storage of user credentials and authentication cookies using JWT tokens, ensuring privacy and data integrity.
+   - React Hot Toast employed for real-time success and error messaging.
 
--  ##### Get food item by search and pagination
-   In All foods page , You can get foods item by searching with foods item name , Also you can see there is a feature of pagination. You can see only 9 foods item by default . By using pagination button you can access more diffrent foods items
+2. **Top Selling Food Items:**
+   - Dynamically curated list of top-selling food items on the homepage based on order count.
+   - Each food item includes a details button for users to explore more about their favorite dishes.
 
--  ##### Food Order and my ordered items
-    User can order foodItems from private route.those private routes are secure with jwt auhtnetication so if you want to access and order a food you must need to be a valid user with jwt token , user can also see how many foods they ordered .you can find this route by clicking profile icon . user cant buy a product that quantity have 0 also less than the current stock amount
+3. **Search and Pagination:**
+   - Efficiently search for specific food items by name in the "All Foods" page.
+   - Pagination feature allows users to navigate through different sets of food items, with nine items displayed by default.
 
--  ##### Add a item and Update 
-    User can Add foodItems from add a item route . This route is also private so you have to logged in and also a valid user with jwt token . user can see how many and which foods are they added and also can update by clicking update button .once click update button there will be show up a modal with input feilds
-   
--  ##### Contact from email sending with email js
-    Anyone who will visit can send message through contact from . I used email js for this feature.
+4. **Food Ordering and Order Tracking:**
+   - Secure private routes for users to order food items, protected by JWT authentication.
+   - Detailed tracking of ordered items available through the user profile, ensuring a personalized and secure ordering experience.
+   - Prevention of ordering items with zero or insufficient stock quantities.
 
--  ##### Project Live Links: https://foodflow-6447d.web.app
--  ##### Client Side Links: https://github.com/imalriyad/foodflow-client
--  ##### Server Side Links: https://github.com/imalriyad/foodflow-server
-    
+5. **Add and Update Food Items:**
+   - Private route for logged-in users to add new food items to the platform.
+   - Intuitive modal interface for users to easily update and manage their added food items.
 
+6. **Contact Form with EmailJS:**
+   - Visitors can send messages through the contact form, utilizing EmailJS for efficient email communication.
 
+## Project Live Links:
 
+- [FoodFlow Live](https://foodflow-6447d.web.app)
+- [Client Side Repository](https://github.com/imalriyad/foodflow-client)
+- [Server Side Repository](https://github.com/imalriyad/foodflow-server)
 
+## Getting Started:
 
+1. **Clone the Repository:**
+   ```
+   git clone https://github.com/imalriyad/foodflow-client.git
+   ```
 
+2. **Install Dependencies:**
+   ```
+   cd foodflow-client
+   npm install
+   ```
 
+3. **Run the Application:**
+   ```
+   npm start
+   ```
 
+4. **Visit the Live Link:**
+   - [FoodFlow Live](https://foodflow-6447d.web.app)
