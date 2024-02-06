@@ -20,12 +20,9 @@
 -  ##### Contact from email sending with email js
     Anyone who will visit can send message through contact from . I used email js for this feature.
 
--  ##### Project Live Links  
-   https://foodflow-6447d.web.app
--  ##### Client Side Links  
-   https://github.com/imalriyad/foodflow-client
--  ##### Server Side Links  
-  https://github.com/imalriyad/foodflow-server
+-  ##### Project Live Links: https://foodflow-6447d.web.app
+-  ##### Client Side Links: https://github.com/imalriyad/foodflow-client
+-  ##### Server Side Links: https://github.com/imalriyad/foodflow-server
     
 
 
