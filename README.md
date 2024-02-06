@@ -1,4 +1,4 @@
-# FoodFlow MERN project with jwt token
+# FoodFlow: Flavorful Journeys, Every Plate a Delight.
 
 ## Top 5 main Features of this projects are :
 
