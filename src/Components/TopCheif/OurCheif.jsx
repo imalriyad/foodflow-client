@@ -67,7 +67,7 @@ function OurCheif() {
               <div className="flex justify-center">
                 <img
                   src="https://i.postimg.cc/4ypGT0S1/telegram.png"
-                  className="lg:w-[40px]  cursor-pointer lg:h-[40px]  w-[35px] h-[35px]  "
+                  className="lg:w-[40px] cursor-pointer lg:h-[40px]  w-[35px] h-[35px]  "
                   alt=""
                 />
                 <img
@@ -77,7 +77,7 @@ function OurCheif() {
                 />
                 <img
                   src="https://i.postimg.cc/T30RwZY7/mail.png"
-                  className="lg:w-[40px]  cursor-pointer lg:h-[40px] w-[35px] h-[35px] "
+                  className="lg:w-[40px] cursor-pointer lg:h-[40px] w-[35px] h-[35px] "
                   alt=""
                 />
               </div>
@@ -104,7 +104,7 @@ function OurCheif() {
                 />
                 <img
                   src="https://i.postimg.cc/T30RwZY7/mail.png"
-                  className="lg:w-[40px]  cursor-pointer lg:h-[40px] w-[35px] h-[35px] "
+                  className="lg:w-[40px] cursor-pointer lg:h-[40px] w-[35px] h-[35px] "
                   alt=""
                 />
               </div>
@@ -121,7 +121,7 @@ function OurCheif() {
               <div className="flex justify-center">
                 <img
                   src="https://i.postimg.cc/4ypGT0S1/telegram.png"
-                  className="lg:w-[40px]  cursor-pointer lg:h-[40px]  w-[35px] h-[35px]  "
+                  className="lg:w-[40px] cursor-pointer lg:h-[40px]  w-[35px] h-[35px]  "
                   alt=""
                 />
                 <img
@@ -138,7 +138,7 @@ function OurCheif() {
             </div>
           </div>
 
-          <div className="p-4  cursor-pointer drop-shadow-md relative">
+          <div className="p-4 cursor-pointer drop-shadow-md relative">
             <img
               src="https://themewagon.github.io/restoran/img/team-4.jpg"
               alt=""
@@ -148,7 +148,7 @@ function OurCheif() {
               <div className="flex justify-center">
                 <img
                   src="https://i.postimg.cc/4ypGT0S1/telegram.png"
-                  className="lg:w-[40px]  cursor-pointer lg:h-[40px]  w-[35px] h-[35px]  "
+                  className="lg:w-[40px] cursor-pointer lg:h-[40px]  w-[35px] h-[35px]  "
                   alt=""
                 />
                 <img
